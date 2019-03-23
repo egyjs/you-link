@@ -56,13 +56,14 @@ function Explode_Content($first, $last, $string)
     $exp = explode($last, $exp[1]);
     return $exp[0];
 }
+
 if(isset($_GET['url']) && $_GET['url'] != ""){
     parse_str( parse_url( $_GET['url'], PHP_URL_QUERY ), $vars );
 
     
     $id=$vars['v'];
  
-    json_encode(YT_V_INFO($id),JSON_PRETTY_PRINT);
+    echo json_encode(YT_V_INFO($id),JSON_PRETTY_PRINT);
 
 }else{
     @$myObj->error = true;
