@@ -65,7 +65,7 @@ if(isset($_GET['url']) && $_GET['url'] != ""){
             $x=explode("&",$dt);
             foreach($x as $r){
                 $c=explode("=",$r);
-                if ($c[0]  == 'itag'){ // remove no need tags
+                if ($c[0]  == 'itag'){ // reference:  https://superuser.com/q/1386658 
                     switch ($c[1]){
                         case '18':
                             $h['mimeType'] = "webm";
