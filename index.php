@@ -65,22 +65,22 @@ if(isset($_GET['url']) && $_GET['url'] != ""){
             $x=explode("&",$dt);
             foreach($x as $r){
                 $c=explode("=",$r);
-                if ($c[0]  == 'itag'){ // reference:  https://superuser.com/q/1386658 
+                if ($c[0]  == 'itag'){ // reference:  https://superuser.com/q/1386658
                     switch ($c[1]){
                         case '18':
-                            $h['mimeType'] = "webm";
+                            $h['mimeType'] = "video/mp4";
                             $h['width'] = "640";
                             $h['height'] = "360";
                             $h['qualityLabel'] = '360p';
                             break;
                         case '22':
-                            $h['mimeType'] = "mp4";
+                            $h['mimeType'] = "video/mp4";
                             $h['width'] = "1280";
                             $h['height'] = "720";
                             $h['qualityLabel'] = '720p';
                             break;
                         case '43':
-                            $h['mimeType'] = "webm";
+                            $h['mimeType'] = "video/webm";
                             $h['width'] = "640";
                             $h['height'] = "360";
                             $h['qualityLabel'] = '360p';
