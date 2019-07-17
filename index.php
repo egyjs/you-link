@@ -28,7 +28,15 @@ if(isset($_GET['url']) && $_GET['url'] != ""){
 
 
     $id=$vars['v'];
-    $dt=file_get_contents("https://www.youtube.com/get_video_info?video_id=$id&el=embedded&ps=default&eurl=&gl=US&hl=en");
+        $curlSession = curl_init();
+    curl_setopt($curlSession, CURLOPT_URL, 'https://www.youtube.com/get_video_info?video_id=$id&el=embedded&ps=default&eurl=&gl=US&hl=en#'.time());
+    curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+    curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+    $dt = curl_exec($curlSession);
+    curl_close($curlSession);
+    
+    
     if (strpos($dt, 'status=fail') !== false) {
 
         $x=explode("&",$dt);
