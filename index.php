@@ -9,6 +9,7 @@ header('Content-Type: application/json');
 function get_error($ErrorExaction){
     $myObj = new stdClass();
     $myObj->error = true;
+    $myObj->status = "fail";
     $myObj->msg = $ErrorExaction;
 
     $myObj->madeBy = "A.El-zahaby";
