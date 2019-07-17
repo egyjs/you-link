@@ -60,8 +60,8 @@ if(isset($_GET['url']) && $_GET['url'] != ""){
             $t[$n]=$v;
         }
         $streams = explode(',',urldecode($t['url_encoded_fmt_stream_map']));
-        var_dump($streams);
-        // if(empty($streams[0])){ get_error('ops! this video has something wrong! :( '); }
+//         var_dump($streams);
+        if(empty($streams[0])){ get_error('ops! this video has something wrong! :( '); }
         foreach($streams as $dt){
             $x=explode("&",$dt);
             foreach($x as $r){
