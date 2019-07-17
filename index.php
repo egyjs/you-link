@@ -1,7 +1,8 @@
 <?php
 /*
 Made by [egy.js](https://www.instagram.com/egy.js/);
-*/
+*/ 
+
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
