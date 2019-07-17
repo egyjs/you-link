@@ -18,6 +18,9 @@ function get_error($ErrorExaction){
     exit;
 }
 
+function get_log($dump){
+    if (isset($_GET['log'])) var_dump($dump).'\n\n\n';
+}
 if(isset($_GET['url']) && $_GET['url'] != ""){
     parse_str( parse_url( $_GET['url'], PHP_URL_QUERY ), $vars );
 
@@ -60,8 +63,10 @@ if(isset($_GET['url']) && $_GET['url'] != ""){
             $t[$n]=$v;
         }
         $streams = explode(',',urldecode($t['url_encoded_fmt_stream_map']));
-//         var_dump($streams);
-        if(empty($streams[0])){ get_error('ops! this video has something wrong! :( '); }
+//        if(empty($streams[0])){ get_error('ops! this video has something wrong! :( '); }
+        if(empty($streams[0])){
+            get_log($streams);
+        }
         foreach($streams as $dt){
             $x=explode("&",$dt);
             foreach($x as $r){
@@ -69,19 +74,19 @@ if(isset($_GET['url']) && $_GET['url'] != ""){
                 if ($c[0]  == 'itag'){ // reference:  https://superuser.com/q/1386658
                     switch ($c[1]){
                         case '18':
-                            $h['mimeType'] = "video/mp4";
+                            $h['mimeType'] = "mp4";
                             $h['width'] = "640";
                             $h['height'] = "360";
                             $h['qualityLabel'] = '360p';
                             break;
                         case '22':
-                            $h['mimeType'] = "video/mp4";
+                            $h['mimeType'] = "mp4";
                             $h['width'] = "1280";
                             $h['height'] = "720";
                             $h['qualityLabel'] = '720p';
                             break;
                         case '43':
-                            $h['mimeType'] = "video/webm";
+                            $h['mimeType'] = "webm";
                             $h['width'] = "640";
                             $h['height'] = "360";
                             $h['qualityLabel'] = '360p';
